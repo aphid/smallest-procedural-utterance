@@ -10,16 +10,23 @@ body {
   font-family: tty;
   font-size: 10pt;
   color: pink;
+  overflow: hidden;
 }
 
 #canvasholder {
   display: inline-block;
   position: relative;
-  width: auto;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 canvas {
-  height: 99vh;
+  position: relative;
+  object-fit: contain;
+  height: inherit;
+  width: inherit;
+  object-position: 50% 50%;
   display: none;
 }
 
@@ -29,7 +36,7 @@ video {
 
 #c3 {
   background: black;
-  display: block;
+  display: inline-block;
 }
 
 #meter {
