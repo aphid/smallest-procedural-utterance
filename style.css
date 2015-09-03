@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'tty';
+  src: url('glass_tty_vt220.ttf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #1b0a22;
+  font-family: tty;
+  font-size: 10pt;
+  color: pink;
+}
+
+#canvasholder {
+  display: inline-block;
+  position: relative;
+  width: auto;
+}
+
+canvas {
+  height: 99vh;
+  display: none;
+}
+
+video {
+  display: none;
+}
+
+#c3 {
+  background: black;
+  display: block;
+}
+
+#meter {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 60%;
+  background-color: transparent;
+  font-size: 16pt;
+}
+
+.hit {
+  color: red;
+}
+
+#pos {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: green;
+}
+
+.loc {
+  position: absolute;
+  width: 1px;
+  height: 25px;
+  background: pink;
+}
+
+#cur {
+  left: 0;
+  background: green;
+  transition: all .75s linear;
+}
+
+#moments {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  width: 30%;
+  color: pink;
+  width: 630px;
+}
+
+#durbar {
+  position: absolute;
+  bottom: 20px;
+  left: 5%;
+  width: 80%;
+  height: 25px;
+  margin: auto;
+  border: 1px solid pink;
+  background: transparent;
+}
+
+#metadata {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  font-size: 10pt;
+  width: 30%;
+  top: 10px;
+  right: 10px;
+  transition: opacity 3s ease-in-out;
+}
