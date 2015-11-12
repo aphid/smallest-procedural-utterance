@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <style>
+    @font-face {
+      font-family: 'tty';
+      src: url('glass_tty_vt220.ttf');
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #1b0a22;
+      font-family: tty;
+      font-size: 20pt;
+      color: pink;
+    }
+    #canvasholder {
+      position: relative;
+      width: 640px;
+    }
+    canvas {
+      height: 99vh;
+    }
+    video {
+      display: none;
+    }
+    #c1 {
+      display: none;
+    }
+    #meter {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: transparent;
+    }
+    .hit {
+      color: red;
+    }
+    #pos {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      color: green;
+    }
+    #moments {
+      position: absolute;
+      top: 35px;
+      left: 10px;
+      color: pink;
+      width: 630px;
+    }
+  </style>
+  <script src="lib/Resemble.js/resemble.js"></script>
+  <script src="lib/context-blender/context_blender.js"></script>
+  <script src="http://unreliable.interrogator.us/lib/jquery-2.1.1.min.js"></script>
+  <script src="http://unreliable.interrogator.us/lib/popcorn.min.js"></script>
+  <title>shot</title>
+  <script>
+    var comp = {};
+    $(document).ready(function () {
+      comp.setup();
+      var pop = Popcorn('video');
+      pop.on('loadeddata', function () {
+        pop.pause(5);
+      });
+      pop.cue(5, function () {
+        console.log("boop");
+        comp.boop();
+
+      });
+
+
+    });
+
+    comp.suchwow = function (time) {
+      var self = this;
+      var num = $('<span/>', {
+        'text': time + " "
+      }).appendTo('#moments');
+
+      num.click(function () {
+        self.pop.currentTime(time);
+      });
+
+    };
+
+
+    comp.setup = function () {
+      this.video = document.getElementById('video');
+      this.pop = Popcorn('video');
+      this.c1 = document.getElementById('c1');
+      this.ctx1 = this.c1.getContext('2d');
+      this.c2 = document.getElementById('c2');
+      this.ctx2 = this.c2.getContext('2d');
+      var self = this;
+      this.video.addEventListener("loadedmetadata", function () {
+        console.log('asdfg');
+        this.pause();
+        self.width = self.video.videoWidth * 2;
+        self.height = self.video.videoHeight * 2;
+      }, false);
+
+    }
+
+    comp.boop = function () {
+      var self = this;
+      this.ctx1.drawImage(this.video, 0, 0, this.width, this.height);
+
+      this.pop.pause(this.pop.currentTime() + 7);
+      window.setTimeout(function () {
+        self.ctx2.drawImage(self.video, 0, 0, self.width, self.height);
+
+        self.ctx1.blendOnto(self.ctx2, 'difference');
+        var pixels = self.ctx2.getImageData(0, 0, self.width, self.height);
+        var br = 0;
+        for (var i = 0, n = pixels.data.length; i < n; i += 4) {
+          var red = pixels.data[i];
+          var green = pixels.data[i + 1];
+          var blue = pixels.data[i + 2];
+          br = br + red + green + blue;
+        }
+        var thresh = br / (self.width * self.height);
+        //$('meter').attr('value', thresh).text(thresh);
+        $('#meter').text(thresh);
+        if (thresh > 100) {
+          $('#meter').addClass('hit');
+          comp.suchwow(self.pop.currentTime());
+        } else {
+          $('#meter').removeClass('hit');
+        }
+        comp.boop();
+      }, 1500);
+    }
+  </script>
+</head>
+
+<body>
+  <video id="video" width="368" height="288" autoplay crossorigin="Anonymous">
+    <!-- <source src="./media/crap.webm" controls/> -->
+    <source src="http://unreliable.interrogator.us/media/crap.webm">
+  </video>
+  <section id="canvasholder">
+    <canvas id="c1" width="640" height="480"></canvas>
+    <canvas id="c2" width="640" height="480"></canvas>
+    <section id="moments"></section>
+
+    <div id="meter"></div>
+    <span id="pos"></span>
+
+
+  </section>
+</body>
