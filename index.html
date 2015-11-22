@@ -18,7 +18,7 @@
 <body>
   <video id="video" width="640" height="360" autoplay crossorigin="Anonymous">
     <!-- <source src="./media/crap.webm" controls/> -->
-    <source src="http://intel.interrogator.us/2665f409bdde20644c7af2c774dcf246_348_4d1872735d21fed5-p_Seg1-Frag.webm" />
+    <source src="130312.mp4" />
   </video>
 
   <canvas id="c1" width="640" height="360"></canvas>
@@ -26,7 +26,7 @@
 
   <section id="canvasholder">
     <canvas id="c3" width="640" height="360"></canvas>
-    <div id="metadata">{ "dcDate": "2014-11-20T14:30:00-05:00", "hearingPage": "http://www.intelligence.senate.gov/hearings/open-hearing-nomination-nicholas-j-rasmussen-be-director-national-counterterrorism-center", "title": "Open Hearing: Nomination of Nicholas J. Rasmussen to be the Director of the National Counterterrorism Center", "date": "11/20/2014", "time": "2:30pm", "shortdate": "141120", "witnesses": [ { "pdfs": [ { "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/hearings/rasmussen.pdf", "remotefileName": "rasmussen.pdf", "localName": "141120_rasmussen.pdf" }, { "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/hearings/questionnaire%20%286%29.pdf", "remotefileName": "questionnaire (6).pdf", "localName": "141120_questionnaire(6).pdf" }, { "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/hearings/prehearing%20%286%29.pdf", "remotefileName": "prehearing (6).pdf", "localName": "141120_prehearing(6).pdf" } ], "firstName": "Nicholas J.", "lastName": "Rasmussen" } ] }
+    <div id="metadata">{ "video": { "localPath": "./media/video/130312.flv", "mp4": "", "ogg": "", "url": "http://www.senate.gov/isvp/?type=arch&amp;comm=intel&amp;filename=intel031213&amp;auto_play=false&amp;poster=http://www.intelligence.senate.gov/sites/default/files/video-poster-flash-fit.jpg", "basename": "130312", "type": "hds", "etpath": "./media/metadata/130312.exiftool.json" }, "witnesses": [ { "pdfs": [ { "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/hearings/clapper%20%283%29.pdf", "remotefileName": "clapper (3).pdf", "localName": "130312_clapper(3).pdf", "localPath": "./media/text/130312_clapper(3).pdf" } ], "firstName": "James R.", "lastName": "Clapper" } ], "dcDate": "2013-03-12T10:00:00-04:00", "hearingPage": "http://www.intelligence.senate.gov/hearings/open-hearing-current-and-projected-national-security-threats-united-states-1", "title": "Open Hearing: Current and Projected National Security Threats to the United States", "date": "03/12/2013", "time": "10:00am", "shortdate": "130312" }
     </div>
     <div id="durbar">
       <div id="cur" class="loc"></div>
@@ -53,6 +53,7 @@
     comp.transitions.push(time);
     this.addMark(time);
     this.socket.emit('intel', {
+      'type': 'shot',
       'hearing': this.hearing,
       'boundary': time
     });
@@ -63,12 +64,12 @@
   comp.setup = function () {
 
     var self = this;
-    this.hearing = '20141120';
+    this.hearing = 'intel20130312';
     this.roughThreshold = 100;
     this.roughInterval = 60.3;
     this.fineThreshold = 90;
     this.fineInterval = 2.31;
-    this.ultraThreshold = 40;
+    this.ultraThreshold = 65;
     this.ultraInterval = 0.304
     this.video = document.getElementById('video');
     this.c1 = document.getElementById('c1');
@@ -79,7 +80,10 @@
     this.ctx3 = this.c3.getContext('2d');
 
     this.socket = io.connect("http://localhost:3000");
-
+    this.socket.emit('subscribe', {
+      hearing: this.hearing,
+      name: 'shot'
+    });
     this.mode = "rough";
     this.cur = document.querySelector("#cur");
     this.video.addEventListener("canplay", function () {
@@ -205,7 +209,9 @@
   }
 
   document.querySelector('video').addEventListener('loadedmetadata', function () {
-    for (canvas of document.querySelectorAll('canvas')) {
+    for (var i = 0; i < document.querySelectorAll('canvas').length; i++) {
+      var canvas = document.querySelectorAll('canvas')[i];
+
       canvas.style.width = document.querySelector('video').videoWidth;
       canvas.style.height = document.querySelector('video').videoHeight;
     }
