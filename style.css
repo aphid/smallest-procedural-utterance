@@ -62,7 +62,7 @@ video {
 .loc {
   position: absolute;
   width: 1px;
-  height: 25px;
+  height: 13px;
   background: pink;
 }
 
@@ -86,7 +86,7 @@ video {
   bottom: 20px;
   left: 5%;
   width: 80%;
-  height: 25px;
+  height: 13px;
   margin: auto;
   border: 1px solid pink;
   background: transparent;

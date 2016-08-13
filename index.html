@@ -11,6 +11,13 @@
     body {
       font-family: Hack, monospace;
     }
+    
+    #c3 {
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-crisp-edges;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
   </style>
   <title>shot</title>
 </head>
@@ -42,6 +49,7 @@
 </body>
 
 <script>
+  var delay = 50;
   var comp = {};
   comp.transitions = [];
 
@@ -100,6 +108,8 @@
       console.log("UH OH");
       console.log(error);
       console.log(error.target.error);
+      video.load();
+      comp.advance();
     }, true);
 
 
@@ -113,16 +123,28 @@
     if (this.mode === "rough") {
       interval = this.roughInterval;
       threshold = this.roughThreshold;
+      delay = 50;
     } else if (this.mode === "fine") {
       interval = this.fineInterval;
       threshold = this.fineThreshold;
+      delay = 350;
     } else if (this.mode === "ultra") {
       interval = this.ultraInterval;
       threshold = this.ultraThreshold;
+      delay = 525;
     }
     var self = this;
-    this.ctx1.drawImage(this.video, 0, 0, this.width, this.height);
-
+    try {
+      this.ctx1.drawImage(this.video, 0, 0, this.width, this.height);
+    } catch (e) {
+      if (e.name == "NS_ERROR_NOT_AVAILABLE") {
+        // Wait a bit before trying again; you may wish to change the
+        // length of this delay.
+        setTimeout(comp.advance, 100);
+      } else {
+        throw e;
+      }
+    }
     this.video.addEventListener('seeked', function () {
       self.video.removeEventListener('seeked', arguments.callee);
 
@@ -167,7 +189,7 @@
           self.video.currentTime = self.video.currentTime - interval;
         } else {
           console.log('threshold passed ' + threshold + ', recording transition at ' + self.video.currentTime);
-
+          delay = 10000;
           comp.reportFrame(self.video.currentTime);
 
           self.mode = "fine";
@@ -179,7 +201,7 @@
       window.setTimeout(function () {
 
         comp.advance();
-      }, 50);
+      }, delay);
     }, false);
     this.video.currentTime = (this.video.currentTime + interval).toFixed(4);
 
