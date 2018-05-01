@@ -3,6 +3,19 @@
   src: url('glass_tty_vt220.ttf');
 }
 
+        body {
+            font-family: Hack, monospace;
+        }
+
+        #c3 {
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+
+
 body {
   margin: 0;
   padding: 0;
