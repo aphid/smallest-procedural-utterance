@@ -4,7 +4,6 @@
 <head>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.015/css/hack.min.css">
-  <script src="lib/socket.io-1.3.7.js"></script>
 
   <script src="lib/socket.io-1.3.7.js"></script>
   <style>
@@ -19,13 +18,13 @@
       image-rendering: crisp-edges;
     }
   </style>
-  <title>shot</title>
+  <title>smallest procedural utterance</title>
 </head>
 
 <body>
   <video id="video" width="640" height="360" autoplay crossorigin="Anonymous">
     <!-- <source src="./media/crap.webm" controls/> -->
-    <source src="130312.mp4" />
+    <source src="https://illegible.us/oversee/media/video/180509_0930.mp4" />
   </video>
 
   <canvas id="c1" width="640" height="360"></canvas>
@@ -33,7 +32,169 @@
 
   <section id="canvasholder">
     <canvas id="c3" width="640" height="360"></canvas>
-    <div id="metadata">{ "video": { "localPath": "./media/video/130312.flv", "mp4": "", "ogg": "", "url": "http://www.senate.gov/isvp/?type=arch&amp;comm=intel&amp;filename=intel031213&amp;auto_play=false&amp;poster=http://www.intelligence.senate.gov/sites/default/files/video-poster-flash-fit.jpg", "basename": "130312", "type": "hds", "etpath": "./media/metadata/130312.exiftool.json" }, "witnesses": [ { "pdfs": [ { "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/hearings/clapper%20%283%29.pdf", "remotefileName": "clapper (3).pdf", "localName": "130312_clapper(3).pdf", "localPath": "./media/text/130312_clapper(3).pdf" } ], "firstName": "James R.", "lastName": "Clapper" } ], "dcDate": "2013-03-12T10:00:00-04:00", "hearingPage": "http://www.intelligence.senate.gov/hearings/open-hearing-current-and-projected-national-security-threats-united-states-1", "title": "Open Hearing: Current and Projected National Security Threats to the United States", "date": "03/12/2013", "time": "10:00am", "shortdate": "130312" }
+    <div id="metadata">
+    "video": {
+        "localPath": "/var/www/illegible.us/html/oversee/media/video/180509_0930.mp4",
+        "ogg": "",
+        "url": "https://www.senate.gov/isvp/?type=arch&comm=intel&filename=intel050918&auto_play=false&poster=http://www.intelligence.senate.gov/sites/default/files/video-poster-flash-fit.jpg",
+        "basename": "180509_0930",
+        "type": "mp4",
+        "metapath": "/var/www/illegible.us/html/oversee/media/video/180509_0930.json"
+      },
+      "witnesses": [
+        {
+          "firstName": "Gina",
+          "lastName": "Haspel",
+          "title": "Deputy Director",
+          "id": "/field-collection/field-hearing-witness/329",
+          "org": "CIA",
+          "pdfs": [
+            {
+              "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/documents/os-ghaspel-050918.pdf",
+              "remotefileName": "os-ghaspel-050918.pdf",
+              "localName": "180509_0930_os-ghaspel-050918.pdf",
+              "title": "Opening Statement",
+              "localPath": "/var/www/illegible.us/html/oversee/media/text/180509_0930_os-ghaspel-050918.pdf",
+              "metadata": {
+                "exiftoolVersionNumber": 10.8,
+                "fileName": "180509_0930_os-ghaspel-050918.pdf",
+                "directory": "/var/www/illegible.us/html/oversee/media/text",
+                "fileSize": "214 kB",
+                "fileModificationDate/Time": "2018:05:11 02:21:24+00:00",
+                "fileAccessDate/Time": "2018:05:11 02:21:24+00:00",
+                "fileInodeChangeDate/Time": "2018:05:11 02:21:24+00:00",
+                "filePermissions": "rw-rw-r--",
+                "fileType": "PDF",
+                "fileTypeExtension": "pdf",
+                "mimeType": "application/pdf",
+                "pdfVersion": 1.5,
+                "linearized": "No",
+                "pageCount": 4,
+                "language": "en-US",
+                "taggedPDF": "Yes",
+                "createDate": "2018:05:08 11:01:30-04:00",
+                "modifyDate": "2018:05:08 11:01:30-04:00"
+              },
+              "txtpath": "/var/www/illegible.us/html/oversee/media/text/180509_0930_os-ghaspel-050918.pdf.txt",
+              "needsScan": true,
+              "imgdir": "/var/www/illegible.us/html/oversee/media/text/180509_0930_os-ghaspel-050918"
+            },
+            {
+              "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/documents/q-ghaspel-050918.pdf",
+              "remotefileName": "q-ghaspel-050918.pdf",
+              "localName": "180509_0930_q-ghaspel-050918.pdf",
+              "title": "Response to Questionnaire for Completion by Presidential Nominees",
+              "localPath": "/var/www/illegible.us/html/oversee/media/text/180509_0930_q-ghaspel-050918.pdf",
+              "metadata": {
+                "exiftoolVersionNumber": 10.8,
+                "fileName": "180509_0930_q-ghaspel-050918.pdf",
+                "directory": "/var/www/illegible.us/html/oversee/media/text",
+                "fileSize": "478 kB",
+                "fileModificationDate/Time": "2018:05:11 02:21:50+00:00",
+                "fileAccessDate/Time": "2018:05:11 02:21:50+00:00",
+                "fileInodeChangeDate/Time": "2018:05:11 02:21:50+00:00",
+                "filePermissions": "rw-rw-r--",
+                "fileType": "PDF",
+                "fileTypeExtension": "pdf",
+                "mimeType": "application/pdf",
+                "pdfVersion": 1.4,
+                "linearized": "Yes",
+                "createDate": "2018:05:08 13:02:13-04:00",
+                "creator": "Hewlett-Packard MFP",
+                "modifyDate": "2018:05:08 13:02:13-04:00",
+                "xmpToolkit": "Adobe XMP Core 5.4-c006 80.159825, 2016/09/16-03:31:08",
+                "format": "application/pdf",
+                "creatorTool": "Hewlett-Packard MFP",
+                "metadataDate": "2018:05:08 13:02:13-04:00",
+                "documentID": "uuid:fda078b4-1a1b-4ca7-8384-d53764627430",
+                "instanceID": "uuid:474ad287-064d-4004-bb94-940c3dfbad1e",
+                "pageCount": 13
+              },
+              "txtpath": "/var/www/illegible.us/html/oversee/media/text/180509_0930_q-ghaspel-050918.pdf.txt",
+              "needsScan": true,
+              "imgdir": "/var/www/illegible.us/html/oversee/media/text/180509_0930_q-ghaspel-050918"
+            },
+            {
+              "remoteUrl": "http://www.intelligence.senate.gov/sites/default/files/documents/aphq-ghaspel-050918.pdf",
+              "remotefileName": "aphq-ghaspel-050918.pdf",
+              "localName": "180509_0930_aphq-ghaspel-050918.pdf",
+              "title": "Response to Committee Additional Pre-Hearing Questions",
+              "localPath": "/var/www/illegible.us/html/oversee/media/text/180509_0930_aphq-ghaspel-050918.pdf",
+              "metadata": {
+                "exiftoolVersionNumber": 10.8,
+                "fileName": "180509_0930_aphq-ghaspel-050918.pdf",
+                "directory": "/var/www/illegible.us/html/oversee/media/text",
+                "fileSize": "181 kB",
+                "fileModificationDate/Time": "2018:05:11 02:22:24+00:00",
+                "fileAccessDate/Time": "2018:05:11 02:22:24+00:00",
+                "fileInodeChangeDate/Time": "2018:05:11 02:22:24+00:00",
+                "filePermissions": "rw-rw-r--",
+                "fileType": "PDF",
+                "fileTypeExtension": "pdf",
+                "mimeType": "application/pdf",
+                "pdfVersion": 1.5,
+                "linearized": "Yes",
+                "aacgAddMark": null,
+                "aacgClassBlock": null,
+                "aacgClassType": "USClassificationMarking",
+                "aacgCreated": 1,
+                "aacgCustomClassXMLPart": "{6AAC734C-9148-4516-B2F3-9BB3C383152E}",
+                "aacgDeclOnList": null,
+                "aacgDescMarkings": null,
+                "aacgDissemOther": null,
+                "aacgFooter": ".UNCLASSIFIED",
+                "aacgHeader": "UNCLASSIFIED",
+                "aacgNatoWarningClassLevel": null,
+                "aacgNonIntOther": null,
+                "aacgOFFICEDLL": 1,
+                "aacgOrconOriginator": null,
+                "aacgOrconRecipients": null,
+                "aacgSCIOther": null,
+                "aacgSatWarningType": null,
+                "aacgUSAFDerivatives": null,
+                "author": "ROBERTAM",
+                "comments": null,
+                "company": "U.S. Government",
+                "createDate": "2018:05:05 21:20:06-04:00",
+                "modifyDate": "2018:05:05 21:20:18-04:00",
+                "portionWaiver": null,
+                "sourceModified": "D:20180506011924",
+                "subject": null,
+                "language": "EN-US",
+                "taggedPDF": "Yes",
+                "xmpToolkit": "Adobe XMP Core 5.4-c006 80.159825, 2016/09/16-03:31:08",
+                "metadataDate": "2018:05:05 21:20:18-04:00",
+                "creatorTool": "Acrobat PDFMaker 11 for Word",
+                "documentID": "uuid:fefdf892-8dcf-4200-8bdd-47964e423ddd",
+                "instanceID": "uuid:55d004af-668f-4c2c-bb60-608b628ff0b9",
+                "format": "application/pdf",
+                "title": null,
+                "description": null,
+                "creator": "ROBERTAM",
+                "producer": "Adobe PDF Library 11.0",
+                "keywords": null,
+                "aacgOfficeDll": 1,
+                "pageLayout": "OneColumn",
+                "pageCount": 65
+              },
+              "txtpath": "/var/www/illegible.us/html/oversee/media/text/180509_0930_aphq-ghaspel-050918.pdf.txt",
+              "needsScan": true,
+              "imgdir": "/var/www/illegible.us/html/oversee/media/text/180509_0930_aphq-ghaspel-050918"
+            }
+          ]
+        }
+      ],
+      "dcDate": "2018-05-09T09:30:00-04:00",
+      "hearingPage": "http://www.intelligence.senate.gov/hearings/open-hearing-nomination-gina-haspel-be-director-central-intelligence-agency",
+      "title": "Open Hearing:  Nomination of Gina Haspel to be the Director of the Central Intelligence Agency",
+      "date": "05/09/2018",
+      "time": "9:30am",
+      "parseDate": "05/09/2018 09:30",
+      "shortdate": "180509",
+      "shorttime": "0930",
+      "shortname": "180509_0930"
+    }
+    
     </div>
     <div id="durbar">
       <div id="cur" class="loc"></div>
@@ -60,11 +221,12 @@
     document.querySelector('#moments').appendChild(num);
     comp.transitions.push(time);
     this.addMark(time);
+    /*
     this.socket.emit('intel', {
       'type': 'shot',
       'hearing': this.hearing,
       'boundary': time
-    });
+    });*/
 
   };
 
@@ -87,7 +249,7 @@
     this.c3 = document.getElementById('c3');
     this.ctx3 = this.c3.getContext('2d');
 
-    this.socket = io.connect("http://localhost:3000");
+    this.socket = io.connect("https://localhost:3000");
     this.socket.emit('subscribe', {
       hearing: this.hearing,
       name: 'shot'
@@ -172,6 +334,10 @@
       var thresh = (br / (self.width * self.height)).toFixed(4);
       var meter = document.querySelector('#meter');
       var metadata = document.querySelector('#metadata');
+      metadata.addEventListener("transitionend", function(event) {
+  metadata.style.display = "none";
+}, false);
+
       meter.textContent = self.video.currentTime + " " + thresh;
       if (thresh > threshold) {
 
